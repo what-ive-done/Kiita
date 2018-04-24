@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   attr_accessor :login
-
+  has_many :items
   validates :username, presence: :true, uniqueness: { case_sensitive: false }
   validates_format_of :username, with: /^[a-zA-Z0-9\-\_\.]*$/, :multiline => true
 
