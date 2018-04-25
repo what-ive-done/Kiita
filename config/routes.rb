@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  resources :users, only: [:show] do
+
+  get '/:username', to: 'users#show', as: 'users' do
     resources :items
   end
+
   devise_for :users
   get 'static_pages/home'
   get 'static_pages/help'
