@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-
-  get '/:username', to: 'users#show', as: 'users' do
+  resources :users, only: [:show] do
     resources :items
   end
 
