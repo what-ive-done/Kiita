@@ -15,7 +15,7 @@
 <div>
   <ul>
     <% @items.each do |item| %>
-      <li><%= item.title %></li>
+      <li><%= link_to item.title, user_item_path(item.user.username, item) %></li>
     <% end %>
   </ul>
 </div>
