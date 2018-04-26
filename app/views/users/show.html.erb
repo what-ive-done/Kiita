@@ -1,4 +1,21 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<% if @isSameUser %>
+  <div>
+    <h1>SameUser</h1>
+  </div>
+<% end %>
+<div>
+  <%= @user.email %>
+  <%= @user.username %>
+</div>
 
-<%= @user.username %>
+<div>
+  <strong>사용자의 글 목록</strong>
+</div>
+
+<div>
+  <ul>
+    <% @items.each do |item| %>
+      <li><%= item.title %></li>
+    <% end %>
+  </ul>
+</div>
