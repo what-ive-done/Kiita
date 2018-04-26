@@ -4,7 +4,14 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all
+    @user = User.find_by(username: params['user_id'])
+    if @user.nil?
+      respond_to do |format|
+        format.html { redirect_to root_path, notice: 'User not found.' }
+      end
+    else
+      redirect_to user_path @user.username
+    end
   end
 
   # GET /items/1
