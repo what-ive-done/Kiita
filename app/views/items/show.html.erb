@@ -28,6 +28,9 @@
   <p><strong>Comments : </strong><%= @item.comments.length %></p>
   <% @item.comments.each do |comment| %>
     <p><%= comment.user.username %> <%= comment.body %></p>
+    <% if current_user == comment.user %>
+      <%= button_to "delete", comment, :method => :delete %>
+    <% end %>
   <% end %>
 </div>
 
