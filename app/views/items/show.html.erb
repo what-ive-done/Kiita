@@ -23,5 +23,26 @@
   <%= @item.private %>
 </p>
 
+
+<div>
+  <p><strong>Comments : </strong><%= @item.comments.length %></p>
+  <% @item.comments.each do |comment| %>
+    <p><%= comment.user.username %> <%= comment.body %></p>
+  <% end %>
+</div>
+
+<div>
+
+<h2>Add a comment:</h2>
+<%= form_with(model: [ @item.user, @item, @item.comments.build ], local: true) do |form| %>
+  <p>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+</div>
 <%= link_to 'Edit', edit_user_item_path(@item.user, @item) %> |
 <%= link_to 'Back', user_items_path(@item.user) %>

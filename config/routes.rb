@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :users, only: [:show] do
-    resources :items
+    resources :items do
+      resources :comments
+    end
   end
 
   get 'static_pages/home'
