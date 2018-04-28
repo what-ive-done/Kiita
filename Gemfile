@@ -69,3 +69,4 @@ gem 'jquery-rails'
 
 # Authentication
 gem 'devise'
+gem 'redcarpet'

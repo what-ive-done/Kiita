@@ -1,17 +1,8 @@
-<p>
-  <strong>Title:</strong>
-  <%= @item.title %>
-</p>
+<h1><%= @item.title %></h1>
 
-<p>
-  <strong>Body:</strong>
-  <%= @item.body %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @item.user %>
-</p>
+<div>
+  <%=raw @markdown_body %>
+</div>
 
 <p>
   <strong>Published:</strong>
@@ -39,7 +30,7 @@
 <h2>Add a comment:</h2>
 <%= form_with(model: [ @item.user, @item, @item.comments.build ], local: true) do |form| %>
   <p>
-    <%= form.label :body %><br>
+    <%= form.label :body, "Comment" %><br>
     <%= form.text_area :body %>
   </p>
   <p>

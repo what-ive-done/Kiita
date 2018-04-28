@@ -17,6 +17,11 @@ class ItemsController < ApplicationController
   # GET /items/1
   # GET /items/1.json
   def show
+    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true)
+    @markdown_body = markdown.render @item.body
+    puts "====="
+    puts @markdown_body
+    puts "====="
   end
 
   # GET /items/new
