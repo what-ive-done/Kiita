@@ -1,21 +1,3 @@
-<% if @isSameUser %>
-  <div>
-    <h1>SameUser</h1>
-  </div>
+<%= render "shared/user_profile", active: 'show' do %>
+  This is Show
 <% end %>
-<div>
-  <%= @user.email %>
-  <%= @user.username %>
-</div>
-
-<div>
-  <strong>사용자의 글 목록</strong>
-</div>
-
-<div>
-  <ul>
-    <% @items.each do |item| %>
-      <li><%= link_to item.title, user_item_path(item.user.username, item) %></li>
-    <% end %>
-  </ul>
-</div>
