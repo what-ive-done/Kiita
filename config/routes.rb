@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :users, only: [:show] do
+    get '/likes', to: 'users#likes'
+    get '/comments', to: 'users#comments'
+    get '/activities', to: 'users#activities'
     resources :items do
       resources :comments
     end
