@@ -12,10 +12,10 @@
       </div>
       <% if @isSameUser %>
       <div>
-        <a href="#">
+        <%= link_to user_settings_path(@user.username) do %>
           <%= material_icon.settings %>
           Edit Profile
-        </a>
+        <% end %>
       </div>
       <% end %>
     </div>
