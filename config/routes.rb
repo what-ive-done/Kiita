@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     get '/likes', to: 'users#likes'
     get '/comments', to: 'users#comments'
     get '/activities', to: 'users#activities'
+    get '/settings', to: 'users#settings'
     resources :items do
       resources :comments
     end
