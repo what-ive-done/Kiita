@@ -1,42 +1,44 @@
-<h1><%= @item.title %></h1>
+<div class="container">
+  <h1><%= @item.title %></h1>
 
-<div>
-  <%=raw @markdown_body %>
-</div>
+  <div>
+    <%=raw @markdown_body %>
+  </div>
 
-<p>
-  <strong>Published:</strong>
-  <%= @item.published %>
-</p>
+  <p>
+    <strong>Published:</strong>
+    <%= @item.published %>
+  </p>
 
-<p>
-  <strong>Private:</strong>
-  <%= @item.private %>
-</p>
+  <p>
+    <strong>Private:</strong>
+    <%= @item.private %>
+  </p>
 
 
-<div>
-  <p><strong>Comments : </strong><%= @item.comments.length %></p>
-  <% @item.comments.each do |comment| %>
-    <p><%= comment.user.username %> <%= comment.body %></p>
-    <% if current_user == comment.user %>
-      <%= button_to "delete", comment, :method => :delete %>
+  <div>
+    <p><strong>Comments : </strong><%= @item.comments.length %></p>
+    <% @item.comments.each do |comment| %>
+      <p><%= comment.user.username %> <%= comment.body %></p>
+      <% if current_user == comment.user %>
+        <%= button_to "delete", comment, :method => :delete %>
+      <% end %>
     <% end %>
+  </div>
+
+  <div>
+
+  <h2>Add a comment:</h2>
+  <%= form_with(model: [ @item.user, @item, @item.comments.build ], local: true) do |form| %>
+    <p>
+      <%= form.label :body, "Comment" %><br>
+      <%= form.text_area :body %>
+    </p>
+    <p>
+      <%= form.submit %>
+    </p>
   <% end %>
+  </div>
+  <%= link_to 'Edit', edit_user_item_path(@item.user, @item) %> |
+  <%= link_to 'Back', user_items_path(@item.user) %>
 </div>
-
-<div>
-
-<h2>Add a comment:</h2>
-<%= form_with(model: [ @item.user, @item, @item.comments.build ], local: true) do |form| %>
-  <p>
-    <%= form.label :body, "Comment" %><br>
-    <%= form.text_area :body %>
-  </p>
-  <p>
-    <%= form.submit %>
-  </p>
-<% end %>
-</div>
-<%= link_to 'Edit', edit_user_item_path(@item.user, @item) %> |
-<%= link_to 'Back', user_items_path(@item.user) %>
