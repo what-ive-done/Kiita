@@ -11,28 +11,28 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, class: "form-control", autofocus: true %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :body %>
-    <%= form.text_area :body %>
+    <%= form.text_area :body, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :published %>
-    <%= form.check_box :published %>
+  <div class="form-group form-check">
+    <%= form.check_box :published, class: "form-check-input" %>
+    <%= form.label :published, class: "form-check-label" %>
   </div>
 
-  <div class="field">
-    <%= form.label :private %>
-    <%= form.check_box :private %>
+  <div class="form-group form-check">
+    <%= form.check_box :private, class: "form-check-input" %>
+    <%= form.label :private, class: "form-check-label" %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="form-group">
+    <%= form.submit "Submit", class: "btn btn-primary" %>
   </div>
 
 <% end %>
