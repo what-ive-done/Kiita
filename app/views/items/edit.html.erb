@@ -1,0 +1,8 @@
+<div class="container">
+  <h1>Editing Item</h1>
+
+  <%= render 'form', item: @item %>
+
+  <%= link_to 'Show', user_item_path(@item.user, @item) %> |
+  <%= link_to 'Back', user_items_path(@item.user) %>
+</div>

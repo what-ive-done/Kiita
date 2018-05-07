@@ -1,0 +1,14 @@
+<%= render "shared/user_profile", active: 'show' do %>
+  <div class="list-group">
+    <% @items.each do |item| %>
+      <%= link_to user_item_path(item.user.username, item), class: "list-group-item list-group-item-action flex-column align-items-start"  do %>
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1"><%= item.title %></h5>
+          <small><%= item.created_at %></small>
+        </div>
+        <p class="mb-1"><%= item.body %></p>
+        <small>Tags</small>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

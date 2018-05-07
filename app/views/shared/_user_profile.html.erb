@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+    <div class="col col-sm-12 col-md-12 col-lg-4">
+      <div>
+        <%= image_tag gravatar_image_url(@user, 270) %>
+      </div>
+      <div>
+        <%= @user.email %>
+      </div>
+      <div>
+        <%= @user.username %>
+      </div>
+      <% if @isSameUser %>
+      <div>
+        <%= link_to user_settings_path(@user.username) do %>
+          <%= material_icon.settings %>
+          Edit Profile
+        <% end %>
+      </div>
+      <% end %>
+    </div>
+    <div class="col">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <%= link_to  "글 목록", user_path(@user.username), class: "nav-link #{active == "show" ? "active" : "" }"  %>
+        </li>
+        <li class="nav-item">
+          <%= link_to  "활동 목록", user_activities_path(@user.username), class: "nav-link #{active == "activities" ? "active" : "" }"  %>
+        </li>
+        <li class="nav-item">
+          <%= link_to  "좋아하는 글 목록", user_likes_path(@user.username), class: "nav-link #{active == "likes" ? "active" : "" }"  %>
+        </li>
+        <li class="nav-item">
+          <%= link_to  "댓글 목록", user_comments_path(@user.username), class: "nav-link #{active == "comments" ? "active" : "" }"  %>
+        </li>
+      </ul>
+      <%= yield %>
+    </div>
+  </div>
+</div>
